@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Un Mes Volviendo a vivir | Sauroposacc & Sushi ✦</title>
+  <meta name="description"
+    content="Celebración poética y mapa estelar del primer mes de amor, complicidad y luz entre nosotros.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Sacramento&display=swap"
+    rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- Canvas de fondo para partículas estelares, nebulosa dinámica y cometas con frases -->
+  <canvas id="cosmic-canvas"></canvas>
+
+  <!-- Capa para cometas flotantes con frases poéticas -->
+  <div id="cosmic-whispers-layer" class="cosmic-whispers-layer" aria-hidden="true"></div>
+
+  <!-- Barra de navegación sutil y controles -->
+  <header class="top-nav" id="topNav">
+    <div class="nav-logo">
+      <span class="logo-symbol">✦</span>
+      <!-- ✍️ [EDITAR TEXTO]: Nombre en el logo superior -->
+      <span class="logo-names">Sauroposacc & Sushi</span>
+      <span class="logo-tag">1 Mes Cósmico</span>
+    </div>
+
+    <div class="nav-links-menu">
+      <a href="#firmamento" class="nav-link">Firmamento</a>
+      <a href="#navegacion" class="nav-link">4 Estrellas</a>
+      <a href="#certezas" class="nav-link">☄️ El Cometa</a>
+      <a href="#carta" class="nav-link">La Cajita</a>
+    </div>
+
+
+    <div class="nav-actions">
+      <a href="#carta" class="nav-link-cta">Nuestra Carta</a>
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════════════
+       BARRA DE AUDIO FLOTANTE (aparece al abrir la caja)
+       ══════════════════════════════════════════ -->
+  <div class="audio-player-bar" id="audioPlayerBar" aria-label="Reproductor musical" role="region">
+    <div class="apb-inner">
+      <div class="apb-info">
+        <span class="apb-note">♫</span>
+        <div class="apb-text">
+          <span class="apb-title">Big City Blues</span>
+          <span class="apb-artist">Lil Peep</span>
+        </div>
+      </div>
+
+      <div class="apb-controls">
+        <!-- Reiniciar -->
+        <button class="apb-btn" id="apbRestartBtn" aria-label="Reiniciar canción" title="Reiniciar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.5"/></svg>
+        </button>
+        <!-- Play / Pause -->
+        <button class="apb-btn apb-btn--main" id="apbPlayBtn" aria-label="Pausar canción" title="Play / Pausa">
+          <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+          <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor" style="display:none"><polygon points="5 3 19 12 5 21"/></svg>
+        </button>
+        <!-- Detener -->
+        <button class="apb-btn" id="apbStopBtn" aria-label="Detener canción" title="Detener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><rect x="4" y="4" width="16" height="16" rx="2"/></svg>
+        </button>
+      </div>
+
+      <!-- Barra de progreso -->
+      <div class="apb-progress-wrap">
+        <div class="apb-progress-bar">
+          <div class="apb-progress-fill" id="apbProgressFill"></div>
+        </div>
+        <span class="apb-time" id="apbTime">0:00</span>
+      </div>
+
+      <!-- Volumen -->
+      <div class="apb-volume">
+        <span class="apb-vol-icon">🔊</span>
+        <input type="range" class="apb-vol-slider" id="apbVolume" min="0" max="1" step="0.02" value="0.7" aria-label="Volumen">
+      </div>
+    </div>
+  </div>
+
+
+  <main class="page-container">
+
+    <!-- ==============================================
+         1. PORTADA / BIENVENIDA POÉTICA
+         ============================================== -->
+    <section class="hero-section" id="portada">
+      <div class="hero-ambient-glow"></div>
+
+      <div class="hero-content">
+        <div class="hero-badge animate-fade-down">
+          <span class="star-icon">✦</span>
+          <!-- ✍️ [EDITAR TEXTO]: Insignia de bienvenida -->
+          <span>Nuestra Historia Singular de Luz</span>
+          <span class="star-icon">✦</span>
+        </div>
+
+        <!-- ✍️ [EDITAR TEXTO]: Título Principal de la Portada -->
+        <h1 class="hero-title animate-title">
+          Un Mes Volviendo <br>
+          <span class="gradient-text">a Vivir</span>
+        </h1>
+
+        <!-- ✍️ [EDITAR TEXTO]: Subtítulo con apodos -->
+        <p class="hero-subtitle animate-fade-up">
+          Sauroposacc & Sushi <span class="sep-dot">·</span> 1 Mes de Coincidir en el Cosmos
+        </p>
+
+        <!-- ✍️ [EDITAR TEXTO]: Frase inicial de la portada -->
+        <div class="hero-quote-card glass-panel animate-fade-up delay-1">
+          <div class="quote-symbol">“</div>
+          <p class="quote-text">
+            De la más densa penumbra nació la certeza más bonita:
+            encontrarnos no fue un azar del tiempo, sino el milagro de volver a respirar hondo,
+            desarmar las defensas y comprender que el amor no cansa, el amor rescata.
+          </p>
+          <div class="quote-author">— Sauroposacc</div>
+        </div>
+
+        <!-- ✍️ [EDITAR TEXTO]: Cápsula del tiempo / Contador -->
+        <div class="days-capsule glass-panel animate-fade-up delay-2">
+          <div class="capsule-item">
+            <span class="capsule-number" id="counterDays">30</span>
+            <span class="capsule-label">Días de certezas</span>
+          </div>
+          <div class="capsule-divider"></div>
+          <div class="capsule-item">
+            <span class="capsule-number">720</span>
+            <span class="capsule-label">Horas sin miedos</span>
+          </div>
+          <div class="capsule-divider"></div>
+          <div class="capsule-item">
+            <span class="capsule-number">∞</span>
+            <span class="capsule-label">Razones para amarte</span>
+          </div>
+        </div>
+
+        <div class="hero-scroll-cue">
+          <a href="#firmamento" class="scroll-link" aria-label="Desplazarse al firmamento">
+            <span class="scroll-text">Descubre nuestro firmamento</span>
+            <span class="scroll-indicator">
+              <i data-lucide="chevron-down"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==============================================
+         2. EL FIRMAMENTO QUE NOS GUÍA (MAPA ESTELAR)
+         ============================================== -->
+    <section class="section firmamento-section" id="firmamento">
+      <div class="section-header">
+        <span class="section-tag">Astrofísica del Destino</span>
+        <!-- ✍️ [EDITAR TEXTO]: Título de la sección del mapa estelar -->
+        <h2 class="section-title">El Firmamento que nos Guía</h2>
+        <div class="gold-line"></div>
+        <p class="section-desc">
+          El cielo exacto bajo el cual nuestro amor se hizo oficial en este refugio de paz.
+        </p>
+      </div>
+
+      <div class="star-map-container glass-panel">
+        <div class="star-map-visual">
+          <div class="star-orbit-ring ring-1"></div>
+          <div class="star-orbit-ring ring-2"></div>
+          <div class="star-orbit-ring ring-3"></div>
+
+          <div class="map-frame-circle" id="mapFrame">
+            <img src="./assets/MapaEstelar.jpg" alt="Mapa Estelar del día que oficializamos lo nuestro"
+              class="star-map-img" id="starMapImg">
+            <div class="map-glass-overlay">
+              <button class="map-zoom-trigger" id="zoomMapBtn" aria-label="Ampliar mapa estelar">
+                <i data-lucide="maximize-2"></i>
+                <span>Ver Bóveda Completa</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="map-coordinates-badge">
+            <span class="coord-icon">✧</span>
+            <!-- ✍️ [EDITAR TEXTO]: Etiqueta de coordenadas -->
+            <span>Cielo de Sauroposacc & Sushi</span>
+            <span class="coord-icon">✧</span>
+          </div>
+        </div>
+
+        <div class="star-map-reflection">
+          <div class="reflection-quote-icon">“</div>
+          <!-- ✍️ [EDITAR TEXTO]: Texto reflexivo de los navegantes y constelaciones -->
+          <p class="reflection-lead">
+            Durante siglos, los navegantes miraban las constelaciones no para que el mar se calmara,
+            sino para saber dónde estaban y hacia dónde querían ir. Las estrellas nunca cambiaron el rumbo del barco,
+            solo dieron su luz... <span class="gold-highlight">y eso fue suficiente.</span>
+          </p>
+          <div class="reflection-divider"></div>
+          <!-- ✍️ [EDITAR TEXTO]: Reflexión dedicada a Miaumorcito -->
+          <p class="reflection-body">
+            El día que oficializamos lo nuestro, el cielo lucía exactamente así. Y tú, Miaumorcito, sin pretenderlo,
+            te convertiste en esa luz: la que no juzga la tormenta, pero me recuerda dónde estoy y me inspira
+            a construir el futuro hacia el que quiero navegar a tu lado.
+          </p>
+          <div class="reflection-footer">
+            <span class="starlight-mark">✦ 30 días orbitando bajo tu luz ✦</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==============================================
+         3. LAS CARTAS DE NAVEGACIÓN (LAS 4 ESTRELLAS GUÍA)
+         ============================================== -->
+    <section class="section navigation-section" id="navegacion">
+      <div class="section-header">
+        <span class="section-tag">Nuestra Brújula Celeste</span>
+        <!-- ✍️ [EDITAR TEXTO]: Título de las 4 estrellas guía -->
+        <h2 class="section-title">Las Cartas de Navegación</h2>
+        <div class="gold-line"></div>
+        <p class="section-desc">
+          Cuatro faros donde has iluminado la manera en que comprendo el universo.
+          Haz clic en cada estrella para desplegar sus coordenadas.
+        </p>
+      </div>
+
+      <div class="navigation-grid">
+        <!-- ✍️ [EDITAR TEXTO]: Estrella 1 - Orión -->
+        <article class="nav-star-card glass-panel" data-star="orion" tabindex="0">
+          <div class="star-card-glow"></div>
+          <div class="star-card-header">
+            <div class="star-constellation-badge">
+              <i data-lucide="shield"></i>
+              <span>Orión</span>
+            </div>
+            <span class="star-rank">Estrella I</span>
+          </div>
+          <h3 class="star-core-title">La Firmeza</h3>
+          <p class="star-short-hint">El equilibrio entre templanza y corazón.</p>
+
+          <div class="star-revealed-content">
+            <div class="coord-tag">Coordenadas del Alma</div>
+            <blockquote class="star-quote">
+              "Me enseñaste que se puede ser vulnerable sin perder la fuerza, y que el amor verdadero protege sin
+              aplastar."
+            </blockquote>
+          </div>
+
+          <div class="star-card-action">
+            <span class="action-label">Toca para sentir la coordenada</span>
+            <i data-lucide="sparkle"></i>
+          </div>
+        </article>
+
+        <!-- ✍️ [EDITAR TEXTO]: Estrella 2 - Sirio -->
+        <article class="nav-star-card glass-panel" data-star="sirio" tabindex="0">
+          <div class="star-card-glow"></div>
+          <div class="star-card-header">
+            <div class="star-constellation-badge">
+              <i data-lucide="sun"></i>
+              <span>Sirio</span>
+            </div>
+            <span class="star-rank">Estrella II</span>
+          </div>
+          <h3 class="star-core-title">La Claridad</h3>
+          <p class="star-short-hint">La pureza de un querer sin laberintos.</p>
+
+          <div class="star-revealed-content">
+            <div class="coord-tag">Coordenadas del Alma</div>
+            <blockquote class="star-quote">
+              "Tu forma de quererme tan directa y sincera me demostró que el amor sano no necesita rodeos ni
+              adivinanzas."
+            </blockquote>
+          </div>
+
+          <div class="star-card-action">
+            <span class="action-label">Toca para sentir la coordenada</span>
+            <i data-lucide="sparkle"></i>
+          </div>
+        </article>
+
+        <!-- ✍️ [EDITAR TEXTO]: Estrella 3 - Las Pléyades -->
+        <article class="nav-star-card glass-panel" data-star="pleyades" tabindex="0">
+          <div class="star-card-glow"></div>
+          <div class="star-card-header">
+            <div class="star-constellation-badge">
+              <i data-lucide="flower-2"></i>
+              <span>Las Pléyades</span>
+            </div>
+            <span class="star-rank">Estrella III</span>
+          </div>
+          <h3 class="star-core-title">El Refugio</h3>
+          <p class="star-short-hint">La ternura que habita en los detalles.</p>
+
+          <div class="star-revealed-content">
+            <div class="coord-tag">Coordenadas del Alma</div>
+            <blockquote class="star-quote">
+              "Tus detalles, desde las flores hasta las cartas que escribiste para mí, me mostraron lo que se siente
+              tener un hogar en alguien."
+            </blockquote>
+          </div>
+
+          <div class="star-card-action">
+            <span class="action-label">Toca para sentir la coordenada</span>
+            <i data-lucide="sparkle"></i>
+          </div>
+        </article>
+
+        <!-- ✍️ [EDITAR TEXTO]: Estrella 4 - Andrómeda -->
+        <article class="nav-star-card glass-panel" data-star="andromeda" tabindex="0">
+          <div class="star-card-glow"></div>
+          <div class="star-card-header">
+            <div class="star-constellation-badge">
+              <i data-lucide="infinity"></i>
+              <span>Andrómeda</span>
+            </div>
+            <span class="star-rank">Estrella IV</span>
+          </div>
+          <h3 class="star-core-title">El Futuro</h3>
+          <p class="star-short-hint">La visión compartida y el compromiso lúcido.</p>
+
+          <div class="star-revealed-content">
+            <div class="coord-tag">Coordenadas del Alma</div>
+            <blockquote class="star-quote">
+              "La certeza de que no quiero 'ver qué pasa', sino luchar por una vida entera, con salud y metas claras a
+              tu lado."
+            </blockquote>
+          </div>
+
+          <div class="star-card-action">
+            <span class="action-label">Toca para sentir la coordenada</span>
+            <i data-lucide="sparkle"></i>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ==============================================
+         6. LA DERIVA DEL COMETA — Mini-juego
+         ============================================== -->
+    <section class="section comet-game-section" id="certezas">
+      <div class="section-header">
+        <span class="section-tag">✦ Un Viaje por el Cosmos ✦</span>
+        <h2 class="section-title">La Deriva del Cometa</h2>
+        <div class="gold-line"></div>
+        <!-- ✍️ [EDITAR TEXTO]: Subtítulo del minijuego del cometa -->
+        <p class="section-desc">
+          Guía al cometa Sauroposacc a través de la oscuridad del universo
+          hasta encontrar su estrella: Valentina.
+        </p>
+      </div>
+
+      <!-- Instrucciones -->
+      <div class="game-instructions glass-panel" id="gameInstructions">
+        <div class="game-inst-inner">
+          <span class="game-inst-icon">☄️</span>
+          <div>
+            <p class="game-inst-main">Usa el ratón o tu dedo para guiar el cometa</p>
+            <p class="game-inst-sub">Evita las zonas de vacío oscuro — llega a la estrella dorada ✦</p>
+          </div>
+          <button class="game-start-btn" id="cometStartBtn">
+            <span>Iniciar Viaje</span>
+            <span class="btn-aura"></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Canvas del juego -->
+      <div class="comet-game-wrapper" id="cometGameWrapper">
+        <canvas id="cometCanvas" aria-label="Juego La Deriva del Cometa"></canvas>
+
+        <!-- HUD: vidas y estado -->
+        <div class="game-hud" id="gameHud" aria-hidden="true">
+          <div class="hud-left">
+            <span class="hud-label">Vidas</span>
+            <div class="hud-hearts" id="hudHearts">
+              <span>💛</span><span>💛</span><span>💛</span>
+            </div>
+          </div>
+          <div class="hud-center">
+            <span class="hud-label" id="hudMessage">¡Encuentra tu estrella!</span>
+          </div>
+        </div>
+
+        <!-- Pantalla de Game Over -->
+        <div class="game-overlay" id="gameOverOverlay" hidden>
+          <div class="overlay-inner glass-panel">
+            <span class="overlay-icon">🌑</span>
+            <h3>El cometa se perdió en el vacío...</h3>
+            <p>Pero el amor lo hará intentarlo infinitas veces.</p>
+            <button class="game-start-btn" id="retryBtn">Intentar de nuevo</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Panel de Revelación — aparece al ganar -->
+      <div class="comet-victory" id="cometVictory" hidden>
+        <div class="victory-flash" id="victoryFlash"></div>
+        <div class="victory-content glass-panel">
+          <div class="victory-stars-top">✦ ✧ ✦ ✧ ✦</div>
+          <h3 class="victory-title">El Cometa Llegó a Su Estrella</h3>
+          <!-- ✍️ [EDITAR TEXTO]: Mensaje de victoria del cometa -->
+          <p class="victory-msg">
+            A través de toda la oscuridad del universo, a través de cada vacío y cada tormenta,
+            el cometa siempre encontró el camino de regreso a su estrella.
+            Eso es lo que eres para mí, mi Vale Fuuu. La única dirección que conoce mi corazón.
+          </p>
+          <!-- La imagen revelada con fondo de estrellas -->
+          <div class="victory-image-container">
+            <div class="victory-img-stars" aria-hidden="true"></div>
+            <img src="assets/imagen2.jpg" alt="Nosotros" class="victory-photo" id="victoryPhoto">
+          </div>
+          <div class="victory-footer">
+            <span>— Sauroposacc & Valentina ✦ 1 Mes Cósmico</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==============================================
+         7. LA CAJA SAGRADA — La Llave y el Corazón
+         ============================================== -->
+    <section class="section secret-box-section" id="carta">
+      <div class="section-header">
+        <span class="section-tag">✦ Para abrir solo con el corazón ✦</span>
+        <h2 class="section-title">La Cajita Sagrada</h2>
+        <div class="gold-line"></div>
+        <p class="section-desc">
+          Hay algo guardado aquí. Algo que esperó años para encontrar a quien pertenece.
+        </p>
+      </div>
+
+      <!-- Audio de Lil Peep que se activa al abrir la caja -->
+      <audio id="loveAudio" loop preload="auto">
+        <source src="assets/lil-peep-big-city-blues.mp3" type="audio/mpeg">
+      </audio>
+
+      <!-- CAJA CERRADA (Estado inicial) -->
+      <div class="sacred-box-wrapper" id="sacredBoxWrapper">
+        <div class="box-ambient-glow"></div>
+
+        <!-- La caja 3D interactiva -->
+        <div class="sacred-box" id="sacredBox" role="button" tabindex="0" aria-label="Abrir la caja sagrada">
+          <!-- Tapa de la caja -->
+          <div class="box-lid" id="boxLid">
+            <div class="box-lid-face lid-top">
+              <div class="lid-ornament">
+                <span class="lid-star">✦</span>
+                <span class="lid-text">S & S</span>
+                <span class="lid-star">✦</span>
+              </div>
+            </div>
+            <div class="box-lid-face lid-front-flap"></div>
+          </div>
+
+          <!-- Cuerpo de la caja -->
+          <div class="box-body">
+            <div class="box-body-face body-front">
+              <div class="box-keyhole" id="boxKeyhole">
+                <div class="keyhole-circle"></div>
+                <div class="keyhole-slot"></div>
+                <!-- Llave animada -->
+                <div class="floating-key" id="floatingKey">🗝️</div>
+              </div>
+              <p class="box-hint-text">Toca para abrir...</p>
+            </div>
+            <div class="box-body-face body-left"></div>
+            <div class="box-body-face body-right"></div>
+            <div class="box-body-face body-bottom"></div>
+          </div>
+        </div>
+
+        <!-- Partículas de luz que salen al abrir -->
+        <div class="box-particles" id="boxParticles" aria-hidden="true"></div>
+
+        <!-- Flash de destello estelar al abrir -->
+        <div class="starlight-flash" id="starlightFlash" aria-hidden="true"></div>
+      </div>
+
+      <!-- CARTA REVELADA (Estado oculto hasta que se abra la caja) -->
+      <div class="letter-revealed" id="letterRevealed" aria-hidden="true">
+        <div class="letter-parchment glass-panel">
+          <div class="letter-stamp">
+            <span>S & S</span>
+            <small>Mes 1</small>
+          </div>
+
+          <div class="letter-header-meta">
+            <span class="letter-date">Nuestro Primer Mes Juntos · 1 Mes de Coincidir</span>
+            <!-- ✍️ [EDITAR TEXTO]: Encabezado de la carta -->
+            <h3 class="letter-salutation">Hola, mi Vale Fuuu:</h3>
+          </div>
+
+          <!-- ✍️ [EDITAR TEXTO]: Cuerpo de la carta principal -->
+          <div class="letter-body">
+            <p>
+              Un mes juntos... ¿puedes creerlo? En estos treinta días no ha existido ni un solo instante en el que haya
+              cruzado por mi mente la idea de alejarme de ti. ¿Alguna vez te has detenido a pensar qué es verdaderamente
+              el amor?
+              Sé que el mundo no tiene una definición certera para nombrarlo y que cada quien tendrá su propia manera de
+              concebirlo;
+              pero para mí sucede algo maravilloso e involuntario: en el segundo exacto en que esa palabra se pronuncia,
+              lo primero
+              que se dibuja en mi mente eres tú. Tus ojitos hermosos, tu mirada, tus labios, tu cabello, tu aroma, tus
+              palabras,
+              tu sentir, tu calor... la totalidad de tu ser.
+            </p>
+
+            <p>
+              No sé aún con exactitud lo que es amar en términos terrenales, jamás lo había hecho antes. Pero, ¿y si el
+              amor
+              no es un sentimiento estático atrapado en un tiempo fijo? ¿Y si el amor es una fuerza tan inmensa y
+              compleja
+              que
+              trasciende el espacio-tiempo, siendo infinitamente más poderosa que cualquier otra ley del universo?
+              Detesto
+              la forma
+              en que la sociedad actual concibe el amor; casi han asesinado el romance para volverlo desechable. ¿Y si
+              nuestro
+              mayor acto de rebeldía contra este mundo frío es amarnos con el alma entera y sin reservas? ¿Quién sería
+              yo
+              sin la
+              inmensidad de lo que siento por ti? ¿Quién sería yo si no luchase por la primera persona por la que en
+              toda
+              mi vida
+              decidí luchar? Eres mi único amor, Valentina, y serás el último también. Porque hay cosas en esta
+              existencia
+              que solo
+              cobran sentido si se recorren de la mano de quien verdaderamente amas.
+            </p>
+
+            <p>
+              Quiero confiarte algo profundamente íntimo, una oración que elevaba al cielo cada noche cuando el dolor se
+              volvía
+              insoportable: <em>«Señor, esta noche te pido por favor que guardes mi corazón en una cajita, que guardes
+                la
+                llave,
+                y que solo se la entregues a la persona que verdaderamente deba amar»</em>. Esa súplica me mantuvo de
+              pie
+              durante años,
+              aferrado a la esperanza de que en algún rincón del cosmos existía un lugar y una persona a la cual
+              pertenecer. Mientras
+              los días pasaban, me dediqué a reconstruirme y a mejorar en todo lo posible, para que cuando ese día
+              llegara, yo estuviera
+              listo para recibirte. Aquella oración me blindó emocionalmente, me resguardó de heridas y me mantuvo
+              firme:
+              siempre tuve
+              la certeza de que yo reconocería el día exacto en que esa persona con la llave coincidiera conmigo.
+            </p>
+
+            <p>
+              Tiempo antes de conocernos, una premonición profunda habitaba en mi pecho; sabía que algo transformador
+              estaba por
+              irrumpir en mi vida. Y cuando por fin nos encontramos, fue fascinante: al principio intentaba mantener la
+              compostura,
+              pero cada vez que te veía, cada vez que te sentía cerca, cada vez que nuestras risas se entrelazaban, yo
+              escuchaba
+              con nitidez el tintineo de esa llave sagrada. Soñaba con el sonido de una caja que por fin se abría. Todo
+              lo que había
+              sepultado y protegido durante años comenzaba a florecer ante tu presencia. No tuve ninguna duda. Cuando
+              comprendí que
+              lo que nacía en mí era real, limpio e inevitable, supe que el día prometido había llegado al cien por
+              ciento. ¿Cómo no
+              creerlo? No existía otro camino ni cabía otra decisión. Atravesaría miles de millones de veces por el
+              dolor
+              más agudo
+              de mi pasado, con tal de volver a coincidir contigo en esta vida. Tienes el universo entero reflejado
+              dentro de tus ojos,
+              mi dulce mujer hermosa... y yo amo el universo con cada fibra de mi ser.
+            </p>
+
+            <p>
+              Sé que hay infinitas cosas que aún nos falta descubrir el uno del otro, y sé que a veces subestimas la
+              magnitud de lo
+              que siento, temiendo que al conocerte más a fondo yo pudiera alejarme. Pero quiero que lo grabes en tu
+              pecho: tú estás
+              dentro de mi corazón. Ocupas un espacio que jamás nadie tuvo ni tendrá jamás, un abismo sagrado que ni
+              sesenta y siete
+              amores juntos podrían llenar. <strong>Estás en mi corazón, cuidándolo con una ternura infinita. Quédate
+                ahí.</strong> Eres la habitante
+              perfecta y eterna para este refugio; no deseo nada más. Valentina, tú eres a quien quiero en mi vida; eres
+              el camino
+              del amor, eres el camino hacia la paz y no existe argumento en el mundo que refute lo que eres para mí.
+              Tienes la potestad
+              y el poder absoluto de destruirme porque mi corazón está desarmado ante ti, pero precisamente por eso te
+              pertenece: porque sé
+              con certeza que jamás lo harías. Lo oré durante años, y Dios te confió a ti ese poder porque vio la
+              nobleza
+              de tu amor y
+              supo cuánto llegaría a amarte. Nos hizo el uno para el otro. Jamás dudes de lo que siento, porque amarte
+              es la razón
+              por la que nací.
+            </p>
+
+            <p>
+              La vida no ha sido fácil y conozco parte de las sombras que has tenido que atravesar. Quizá seamos hijos
+              de quienes no
+              siempre supieron sanar, herederos de silencios, miedos y dolores antiguos. Hemos cometido errores en el
+              camino, pero aun
+              así te admiro con devoción infinita: eres la mujer de mi vida, la mujer que me llena de orgullo; la
+              persona
+              que, habiendo
+              conocido la tormenta, conserva el corazón más noble, fuerte y tierno que he sentido jamás. ¿Te preguntas
+              si
+              aun así te
+              amaría? Permíteme devolverte todo lo que alguna vez la vida te arrebató; permíteme entregarte mi tiempo,
+              mi
+              alegría,
+              mis sueños, mi calor, mi sangre, mi alma y toda mi vida.
+            </p>
+
+            <!-- ✍️ [EDITAR TEXTO]: Verso climático — Marchítame y espinas -->
+            <p class="letter-climax">
+              Marchítame por tu exceso de agua, sécame por tu cálido ser, pero jamás me marchites por falta de regar ni
+              por la ausencia
+              de tu calidez. El día que tomé tu mano supe que había caminado con las manos vacías toda mi vida. Dime
+              dónde
+              te duele más,
+              y te prometo que haré que sea ahí donde más te amen. Cada rosa, por hermosa que sea, tiene espinas, mi
+              amor;
+              pero muéstrame
+              las tuyas, que yo te mostraré unas manos dispuestas a sangrar por ti sin soltarte jamás.
+            </p>
+
+            <!-- ✍️ [EDITAR TEXTO]: Cierre de la carta — te escojo a ti -->
+            <p>
+              Valentina, te escojo a ti hoy y te escogería en cada una de mis vidas, sin importar cuán difícil pueda
+              tornarse el sendero.
+              Quiero aprenderte, estudiarte y memorizarte como la más fascinante enciclopedia, conocer cada detalle que
+              nadie más tuvo
+              la sensibilidad de notar, y prometo amar cada una de tus páginas. Hoy cumplimos nuestro primer mes, mi
+              amorcito, y te prometo
+              ser el mejor hombre en cada sentido para ti: te haré sentir orgullosa y jamás permitiré que el amor nos
+              falte.
+              ¿Sabes qué es el amor, mi amor? Al final de todo, <strong>el amor somos nosotros, y lo construiremos
+                juntos</strong>.
+            </p>
+          </div>
+
+          <div class="letter-signature-block">
+            <div class="script-signature">Siempre tuyo, Sauroposacc</div>
+            <div class="signature-date">Primer mes de infinitos · Para mi Vale Fuuu</div>
+          </div>
+
+          <!-- Botón Clímax / Revelación de Conjunción Cósmica -->
+          <div class="letter-action-container">
+            <button id="climaxBtn" class="climax-button" aria-label="Sellar nuestra conjunción cósmica">
+              <span class="btn-stars-icon">✨</span>
+              <span class="btn-main-label">Sellar Nuestra Conjunción Cósmica</span>
+              <span class="btn-ripple"></span>
+            </button>
+          </div>
+
+          <!-- ✍️ [EDITAR TEXTO]: Banner de Conjunción Cósmica final -->
+          <div class="saturday-banner" id="saturdayBanner" hidden>
+            <div class="banner-sparkles">✦ ✧ ✦</div>
+            <h3 class="banner-heading">¡Nuestra Conjunción Infinita! 💖</h3>
+            <p class="banner-subtext">
+              En un universo de 93 mil millones de años luz, haber coincidido contigo en el mismo planeta,
+              en el mismo segundo y bajo el mismo cielo es mi milagro favorito.
+              Te Adoro más allá de todo horizonte cósmico, Miaumorcito.
+            </p>
+            <div class="banner-countdown" id="saturdayCountdown">
+              <span>Calculando nuestra gravedad compartida...</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal para visualización detallada / Coordenadas / Mapa Estelar -->
+    <div class="cosmic-modal-backdrop" id="modalBackdrop" aria-hidden="true">
+      <div class="cosmic-modal glass-panel" role="dialog" aria-labelledby="modalTitle">
+        <button class="modal-close-btn" id="modalCloseBtn" aria-label="Cerrar modal">✕</button>
+        <div class="modal-header">
+          <span class="modal-icon">✦</span>
+          <h3 id="modalTitle">Destello Estelar</h3>
+        </div>
+        <div class="modal-content" id="modalBody">
+          <!-- Contenido dinámico -->
+        </div>
+        <div class="modal-footer">
+          <button class="action-btn" id="modalActionBtn">Aceptar con el corazón</button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer con créditos elegantes y nota afectuosa -->
+  <footer class="page-footer">
+    <div class="footer-inner">
+      <div class="footer-constellation">
+        <span>★</span><span>·</span><span>★</span><span>·</span><span>★</span>
+      </div>
+      <p class="footer-quote">
+        "Porque algunas personas regresan a una casa, y otras regresan a alguien."
+      </p>
+      <div class="footer-meta">
+        <!-- ✍️ [EDITAR TEXTO]: Firma en el footer -->
+        <span>Hecho con devoción cósmica por Sauroposacc para su Miaumorcito</span>
+        <span class="meta-sep">•</span>
+        <span>1 Mes Volviendo a Vivir</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+</body>
+
+</html>
